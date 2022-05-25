@@ -19,5 +19,25 @@ namespace ComidaRapida.Controllers
             var pedidos = await repositorioPedidos.Listar();
             return View(pedidos);
         }
+
+        [HttpGet]
+        public IActionResult Crear()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Crear(PedidoViewModel pedido)
+        {
+            //Valida los campos del modelo
+            if (!ModelState.IsValid)
+            {
+                return View(pedido);
+            }
+
+            await repositorioPedidos.Crear(pedido);
+
+            return RedirectToAction("Listar");
+        }
     }
 }
