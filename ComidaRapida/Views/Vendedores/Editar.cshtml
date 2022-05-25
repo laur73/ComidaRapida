@@ -1,7 +1,7 @@
 ﻿@model UsuarioViewModel
 
 @{
-    ViewData["Title"] = "Crear Vendedor";
+    ViewData["Title"] = "Editar Vendedor";
 }
 
 <div class="content-wrapper">
@@ -30,9 +30,9 @@
 
                     <div class="card-body">
 
-                        <form asp-controller="Vendedores" asp-action="Crear">
+                        <form asp-controller="Vendedores" asp-action="Editar">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+                            <input asp-for="IdUsuario" type="hidden" class="form-control">
                             <!-- Inicio Input Nombre -->
                             <div class="form-group">
                                 <label>Nombre: </label>
@@ -59,20 +59,8 @@
                             </div>
                             <!-- Fin Input Usuario -->
 
-                            <!-- Inicio Input Contraseña -->
-                            <div class="form-group">
-                                <label>Contraseña: </label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="bi bi-key"></i></span>
-                                    </div>
-                                    <input asp-for="Pwd" type="password" class="form-control" placeholder="Escriba la contraseña del vendedor">
-                                </div>
-                                <span asp-validation-for="Pwd" class="text-danger"></span>
-                            </div>
-                            <!-- Fin Input Contraseña -->
                             
-                            <button type="submit" class="btn btn-success">Crear</button>
+                            <button type="submit" class="btn btn-success">Editar</button>
                             <a class="btn btn-secondary" asp-controller="Vendedores" asp-action="Listar">Cancelar </a>
                         </form>
                     </div>
@@ -88,4 +76,6 @@
         <script src="../../plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
         <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
     </div>

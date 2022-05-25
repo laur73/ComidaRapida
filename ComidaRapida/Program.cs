@@ -1,7 +1,10 @@
+using ComidaRapida.Repositorios;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IRepositorioVendedores, RepositorioVendedores>();
 
 var app = builder.Build();
 
