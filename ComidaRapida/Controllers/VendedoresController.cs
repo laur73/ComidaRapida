@@ -23,9 +23,9 @@ namespace ComidaRapida.Controllers
         [HttpGet]
         public async Task<IActionResult> VerificarExisteVendedor(string nombre, string usuario)
         {
-            var existeHabitante = await repositorioVendedores.Existe(nombre, usuario);
+            var existeVendedor = await repositorioVendedores.Existe(nombre, usuario);
 
-            if (existeHabitante)
+            if (existeVendedor)
             {
                 return Json($"El vendedor ya existe");
             }

@@ -41,7 +41,7 @@ namespace ComidaRapida.Repositorios
         {
             using var connection = new SqlConnection(connectionString);
             var id = await connection.QuerySingleAsync<int>(@"INSERT INTO Usuarios (Nombre, Usuario, Pwd, FechaAlta, RoleId)
-                                                        VALUES (@Nombre, @Usuario, @Pwd, GETDATE(),3);    
+                                                        VALUES (@Nombre, @Usuario, @Pwd, GETDATE(),2);    
                                                         SELECT SCOPE_IDENTITY();", vendedor);
             vendedor.IdUsuario = id;
         }
@@ -50,7 +50,7 @@ namespace ComidaRapida.Repositorios
         {
             using var connection = new SqlConnection(connectionString);
             return await connection.QueryFirstOrDefaultAsync<UsuarioViewModel>(
-                                    @"SELECT * FROM Usuarios WHERE Idusuario = @IdVendedor", new { IdVendedor });
+                                    @"SELECT * FROM Usuarios WHERE IdUsuario = @IdVendedor", new { IdVendedor });
         }
 
         public async Task Actualizar(UsuarioViewModel vendedor)
