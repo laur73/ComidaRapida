@@ -1,0 +1,95 @@
+﻿@model UsuarioViewModel
+
+@{
+    ViewData["Title"] = "Crear Vendedor";
+}
+
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0"></h1>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+
+    <section class="content">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="card card-olive">
+
+                    <div class="card-header">
+                        <h3 class="card-title">Crear Vendedor</h3>
+                    </div>
+
+                    <div class="card-body">
+
+                        <form asp-controller="Vendedores" asp-action="Crear">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <!-- Inicio Input Nombre -->
+                            <div class="form-group">
+                                <label>Nombre: </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                    </div>
+                                    <input asp-for="Nombre" type="text" class="form-control" placeholder="Escriba el nombre del vendedor">
+                                </div>
+                                <span asp-validation-for="Nombre" class="text-danger"></span>
+                            </div>
+                            <!-- Fin Input Nombre -->
+
+                            <!-- Inicio Input Usuario-->
+                            <div class="form-group">
+                                <label>Usuario: </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                    </div>
+                                    <input asp-for="Usuario" type="text" class="form-control" placeholder="Escriba el usuario del vendedor">
+                                </div>
+                                <span asp-validation-for="Usuario" class="text-danger"></span>
+                            </div>
+                            <!-- Fin Input Usuario -->
+
+                            <!-- Inicio Input Contraseña -->
+                            <div class="form-group">
+                                <label>Contraseña: </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="bi bi-key"></i></span>
+                                    </div>
+                                    <input asp-for="Pwd" type="password" class="form-control" placeholder="Escriba la contraseña del vendedor">
+                                </div>
+                                <span asp-validation-for="Pwd" class="text-danger"></span>
+                            </div>
+                            <!-- Fin Input Contraseña -->
+                            
+                            <button type="submit" class="btn btn-primary">Crear</button>
+                            <a class="btn btn-danger" asp-controller="Vendedores" asp-action="Listar">Cancelar </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @section Scripts{
+        <partial name="_ValidationScriptsPartial" />
+    }
+        <!-- jQuery -->
+        <script src="../../plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- InputMask -->
+        <script src="../../plugins/moment/moment.min.js"></script>
+        <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+
+    </div>

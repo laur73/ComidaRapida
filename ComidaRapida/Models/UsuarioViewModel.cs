@@ -6,15 +6,15 @@ namespace ComidaRapida.Models
     {
         public int IdUsuario { get; set; }
 
-        [Required(ErrorMessage = "El campo {0} es requerido")]
-        [StringLength(maximumLength: 100)]
+        [Required(ErrorMessage = "Ingrese un {0}")]
+        [StringLength(maximumLength: 50)]
         public string Nombre { get; set;}
 
-        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [Required(ErrorMessage = "Ingrese un {0}")]
         [StringLength(maximumLength: 20)]
         public string Usuario { get; set; }
 
-        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [Required(ErrorMessage = "Ingrese una {0}")]
         [StringLength(maximumLength: 20)]
         [Display(Name = "Contraseña")]
         public string Pwd { get; set; }

@@ -2,9 +2,9 @@
 
 namespace ComidaRapida.Controllers
 {
-    public class UsuariosController : Controller
+    public class VendedoresController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Crear()
         {
             return View();
         }

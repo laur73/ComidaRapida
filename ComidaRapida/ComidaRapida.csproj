@@ -11,4 +11,9 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Repartidores\" />
+    <Folder Include="Views\Usuarios\" />
+  </ItemGroup>
+
 </Project>
