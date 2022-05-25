@@ -1,0 +1,81 @@
+﻿@model UsuarioViewModel
+
+@{
+    ViewData["Title"] = "Editar Repartidor";
+}
+
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0"></h1>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+
+    <section class="content">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="card card-olive">
+
+                    <div class="card-header">
+                        <h3 class="card-title">Editar Repartidor</h3>
+                    </div>
+
+                    <div class="card-body">
+
+                        <form asp-controller="Repartidores" asp-action="Editar">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input asp-for="IdUsuario" type="hidden" class="form-control">
+                            <!-- Inicio Input Nombre -->
+                            <div class="form-group">
+                                <label>Nombre: </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                    </div>
+                                    <input asp-for="Nombre" type="text" class="form-control" placeholder="Escriba el nombre del repartidor">
+                                </div>
+                                <span asp-validation-for="Nombre" class="text-danger"></span>
+                            </div>
+                            <!-- Fin Input Nombre -->
+
+                            <!-- Inicio Input Usuario-->
+                            <div class="form-group">
+                                <label>Usuario: </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                    </div>
+                                    <input asp-for="Usuario" type="text" class="form-control" placeholder="Escriba el usuario del repartidor">
+                                </div>
+                                <span asp-validation-for="Usuario" class="text-danger"></span>
+                            </div>
+                            <!-- Fin Input Usuario -->
+
+                            
+                            <button type="submit" class="btn btn-success">Editar</button>
+                            <a class="btn btn-secondary" asp-controller="Repartidores" asp-action="Listar">Cancelar </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @section Scripts{
+        <partial name="_ValidationScriptsPartial" />
+    }
+        <!-- jQuery -->
+        <script src="../../plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    </div>
