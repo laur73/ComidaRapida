@@ -1,0 +1,143 @@
+﻿@model IEnumerable<PedidoViewModel>
+
+@{
+    ViewData["Title"] = "Pedidos";
+}
+
+<div class="content-wrapper">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Pedidos Registrados</h1>
+                    <br>
+                    <a class="btn btn-success" asp-controller="Pedidos" asp-action="Crear">Crear Pedidos</a>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-olive">
+                        <div class="card-header">
+                            <h3 class="card-title">Pedidos</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            @if (@Model.Count() == 0)
+                            {
+                                <div class="card-header">
+                                    <h3 class="card-title">No hay datos para mostrar</h3>
+                                </div>
+                            }
+                            else
+                            {
+                                <table id="example" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Platillo</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Cliente</th>
+                                            <th>Dirección</th>
+                                            <th>Tipo de Pago</th>
+                                            <th>Vendedor</th>
+                                            <th>Repartidor</th>
+                                            <th>Fecha de Alta</th>
+                                            <th>Fecha de Entrega</th>
+                                            <th>Estatus</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (var pedido in Model)
+                                        {
+                                            <tr>
+                                                <td>@pedido.NombrePlatillo</td>
+                                                <td>@pedido.Costo</td>
+                                                <td>@pedido.Cantidad</td>
+                                                <td>@pedido.Cliente</td>
+                                                <td>@pedido.Direccion</td>
+                                                <td>@pedido.TipoPago</td>
+                                                <td>@pedido.Vendedor</td>
+                                                <td>@pedido.Repartidor</td>
+                                                <td>@pedido.FechaAlta.ToString("dd/MM/yyyy hh:ss")</td>
+                                                <td>@pedido.FechaFinalizado.ToString("dd/MM/yyyy hh:ss")</td>
+                                                <td>@pedido.Estatus</td>
+                                                <td>
+                                                    <a class="btn btn-warning" asp-controller="Pedidos" asp-action="Editar" asp-route-IdPedido="@pedido.IdPedido">
+                                                        <i class="bi bi-pencil-square"></i>
+                                                        Editar
+                                                    </a>
+
+                                                    <a class="btn btn-danger" asp-controller="Pedidos" asp-action="Eliminar" asp-route-IdPedido="@pedido.IdPedido">
+                                                        <i class="bi bi-trash-fill"></i>
+                                                        Eliminar
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+                            }
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+
+    <!-- Page specific script -->
+    <script>
+        $(function() {
+            $("#example").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sSearch": "Buscar:",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "sProcessing": "Procesando...",
+                }
+            });
+        });
+    </script>
+
+</div>
