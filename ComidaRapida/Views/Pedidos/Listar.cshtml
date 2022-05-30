@@ -12,7 +12,7 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">Pedidos Registrados</h1>
                     <br>
-                    <a class="btn btn-success" asp-controller="Pedidos" asp-action="Crear">Crear Pedidos</a>
+                    <a class="btn btn-success" asp-controller="Pedidos" asp-action="Crear">Crear Pedido</a>
                 </div>
                 <!-- /.col -->
             </div>
@@ -70,19 +70,48 @@
                                                 <td>@pedido.TipoPago</td>
                                                 <td>@pedido.Vendedor</td>
                                                 <td>@pedido.Repartidor</td>
-                                                <td>@pedido.FechaAlta.ToString("dd/MM/yyyy hh:ss")</td>
-                                                <td>@pedido.FechaFinalizado.ToString("dd/MM/yyyy hh:ss")</td>
+                                                <td>@pedido.FechaAlta.ToString("dd/MM/yyyy hh:mm tt")</td>
+                                                @if (pedido.FechaFinalizado.ToString() == "01/01/1900 12:00:00 a. m.")
+                                                {
+                                                    <td>Pendiente</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>@pedido.FechaFinalizado.ToString("dd/MM/yyyy hh:mm tt")</td>
+                                                }
                                                 <td>@pedido.Estatus</td>
                                                 <td>
-                                                    <a class="btn btn-warning" asp-controller="Pedidos" asp-action="Editar" asp-route-IdPedido="@pedido.IdPedido">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                        Editar
+                                                    @if (pedido.Estatus == "Recibido")
+                                                    {
+                                                        <a class="btn btn-warning" title="Editar" asp-controller="Pedidos" asp-action="Editar" asp-route-IdPedido="@pedido.IdPedido">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a class="btn btn-warning disabled" title="Editar" asp-controller="Pedidos" asp-action="Editar" asp-route-IdPedido="@pedido.IdPedido">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </a>
+                                                    }
+
+                                                    <a class="btn btn-danger" title="Eliminar" asp-controller="Pedidos" asp-action="Eliminar" asp-route-IdPedido="@pedido.IdPedido">
+                                                        <i class="bi bi-trash-fill"></i>
                                                     </a>
 
-                                                    <a class="btn btn-danger" asp-controller="Pedidos" asp-action="Eliminar" asp-route-IdPedido="@pedido.IdPedido">
-                                                        <i class="bi bi-trash-fill"></i>
-                                                        Eliminar
-                                                    </a>
+                                                    @if (pedido.Estatus == "Recibido")
+                                                    {
+                                                        <a class="btn btn-success" title="Entregar" asp-controller="Pedidos" asp-action="Entregar" asp-route-IdPedido="@pedido.IdPedido">
+                                                            <i class="bi bi-check"></i>
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a class="btn btn-success disabled" title="Entregar" asp-controller="Pedidos" asp-action="Entregar" asp-route-IdPedido="@pedido.IdPedido">
+                                                            <i class="bi bi-check"></i>
+                                                        </a>
+                                                    }
+
+
                                                 </td>
                                             </tr>
                                         }

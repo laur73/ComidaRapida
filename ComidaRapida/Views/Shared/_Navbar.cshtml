@@ -1,5 +1,5 @@
 ﻿<nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
-    <div class="container">
+    <div class="container-fluid">
         <a href="../../index3.html" class="navbar-brand">
             <span class="brand-text font-weight-light">Comida Rápida</span>
         </a>
@@ -19,13 +19,14 @@
                 <li class="nav-item">
                     <a asp-controller="Repartidores" asp-action="Listar" class="nav-link">Repartidores</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Pedidos</a>
-                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                        <li><a href="#" class="dropdown-item">Recibidos</a></li>
-                        <li><a href="#" class="dropdown-item">Entregados</a></li>                      
-                    </ul>
+                <li class="nav-item">
+                    <a asp-controller="Repartidores" asp-action="Listar" class="nav-link">Pedidos Recibidos</a>
                 </li>
+                <li class="nav-item">
+                    <a asp-controller="Repartidores" asp-action="Listar" class="nav-link">Pedidos Entregados</a>
+                </li>
+
+
             </ul>
 
          
